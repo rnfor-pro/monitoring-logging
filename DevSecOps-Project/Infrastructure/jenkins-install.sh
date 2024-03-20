@@ -34,8 +34,8 @@ sudo systemctl enable jenkins
 
 # Clone repo
 
-git clone https://github.com/enyioman/Netflix_Clone.git
+git clone https://github.com/rnfor-pro/monitoring-logging.git
 
 # Rename hostname
 
-sudo hostnamectl set-hostname jenkinsserver
+sudo hostnamectl set-hostname jenkins_server
