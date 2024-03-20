@@ -1,6 +1,6 @@
 - Implemetation
-  - [1](../01-DevSecOps-Project/README.md)
-  - [2](../kube-EKS/README.md)
+  - [1](../blob/main/01-DevSecOps-Project/README.md)
+  - [2](../blob/main/kube-EKS/README.md)
 ---
   
 
