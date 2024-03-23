@@ -107,6 +107,7 @@ sudo vim /etc/prometheus/prometheus.yml
       - targets: ['<jenkins-ip>:8080']
 ``` 
 
+Install helm [here](https://helm.sh/docs/intro/install/)
 
 
 
