@@ -10,6 +10,7 @@
 
 # Ignore all .log files
 *.log
+*.pem
 
 # Ignore the local.properties file
 local.properties
