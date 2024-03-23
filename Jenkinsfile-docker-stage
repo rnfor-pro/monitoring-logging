@@ -1,0 +1,16 @@
+stage("Docker Build & Push"){
+            steps{
+                script{
+                   withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
+                       sh "docker build --build-arg TMDB_V3_API_KEY=xxxxxxxxxxx -t netflix ."
+                       sh "docker tag netflix rudolphnfor/netflix:latest "
+                       sh "docker push rudolphnfor/netflix:latest "
+                    }
+                }
+            }
+        }
+        stage("TRIVY"){
+            steps{
+                sh "trivy image rudolphnfor/netflix:latest > trivyimage.txt"
+            }
+        }
