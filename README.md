@@ -332,7 +332,21 @@ OWASP Dependency Check
 
 Click on Apply and Save.
 
-Now go configure → Pipeline and add [this](https://github.com/rnfor-pro/monitoring-logging/blob/main/Jenkinsfile-dependency-check) stage to your pipeline and build.
+Now go configure → Pipeline and add this stage to your pipeline and build.
+
+```
+stage('OWASP FS SCAN') {
+            steps {
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
+        stage('TRIVY FS SCAN') {
+            steps {
+                sh "trivy fs . > trivyfs.txt"
+            }
+        }
+```
 
 Docker Image Build and Push
 ---
