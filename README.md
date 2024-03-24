@@ -376,9 +376,15 @@ stage("Docker Build & Push"){
 
 When you log in to Dockerhub, you will see a new image is created
 
-Now Run the container to see if the game coming up or not by adding the below stage
+Now add the stage below and build your application as a docker container, access it on `jenkins_public_ip:8081`
 
-[here](https://github.com/rnfor-pro/monitoring-logging/blob/main/Jenkinsfile-container-build-stage)
+```
+stage('Deploy to container'){
+            steps{
+                sh 'docker run -d --name netflix -p 8081:80 rudolphnfor/netflix:latest'
+            }
+        }
+```
 
 
 EKS
