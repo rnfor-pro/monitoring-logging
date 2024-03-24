@@ -354,7 +354,25 @@ Now, goto Dashboard → Manage Jenkins → Tools → Docker installation
 
 Add DockerHub Username and Password under Global Credentials [video]()
 
-Add [this stage](https://github.com/rnfor-pro/monitoring-logging/blob/main/Jenkinsfile-docker-stage) to Pipeline Script
+Add this stage to Pipeline Script and build
+```
+stage("Docker Build & Push"){
+            steps{
+                script{
+                   withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
+                       sh "docker build --build-arg TMDB_V3_API_KEY=xxxxxxxxxxx -t netflix ."
+                       sh "docker tag netflix rudolphnfor/netflix:latest "
+                       sh "docker push rudolphnfor/netflix:latest "
+                    }
+                }
+            }
+        }
+        stage("TRIVY"){
+            steps{
+                sh "trivy image rudolphnfor/netflix:latest > trivyimage.txt"
+            }
+        }
+```
 
 When you log in to Dockerhub, you will see a new image is created
 
