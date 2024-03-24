@@ -1,7 +1,5 @@
 # Deploy Netflix Clone on AWS Cloud using Jenkins - DevSecOps Project!
 
-
-
 DevSecOps Pipeline Solution built using Jenkins as the CI tool. With Sonarqube, OWASP, and Trivy for security and vulnerability detection. Docker used in containerizing the App, and ArgoCD to enabled Continuous Deployment to AWS EKS. Helm to managing the Kubernetes applications a breeze. With the power of Prometheus and Grafana, to gaine valuable insights into the application’s performance, cluster health, and pipeline metrics.
 
 - Prerequisites
@@ -11,7 +9,7 @@ DevSecOps Pipeline Solution built using Jenkins as the CI tool. With Sonarqube, 
   - [Terraform](https://developer.hashicorp.com/terraform/install)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
 
-Step 1 [Fork the github repo](https://github.com/rnfor-pro/monitoring-logging.git) and clone it on your local machine.
+[Fork the github repo](https://github.com/rnfor-pro/monitoring-logging.git) and clone it on your local machine.
 ```
 git clone < repo_url>
 ```
@@ -25,7 +23,8 @@ terraform plan
 terraform apply
 ```
 
-Step 2 —Access Jenkins UI.
+Access Jenkins UI.
+---
 
 `
 hostIP:8080
@@ -44,7 +43,10 @@ hostIP:8080
   - OWASP Dependency Check
   - Blue ocean
 
-Step 3 -Run SonarQube on your Jenkins server as  a Docker Container and access its UI.
+SonarQube
+---
+
+Run SonarQube on your Jenkins server as  a Docker Container and access its UI.
 
 - SSH into your Jenkins server.
 - Confirm docker daemon is active
@@ -63,7 +65,7 @@ docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 
 Prometheus Exporter Configuration
 ---
-Step 4 — Let’s finalize Prometheus installation by creating a systemd unit configuration file for Prometheus.
+Let’s finalize Prometheus installation by creating a systemd unit configuration file for Prometheus.
 
 ```
 sudo vi /etc/systemd/system/prometheus.service
@@ -171,23 +173,6 @@ promtool check config /etc/prometheus/prometheus.yml
 curl -X POST http://localhost:9090/-/reload
 ```
 
-
-
-Step 5 — Install and configure all the required plugins in Jenkins.
-
-Step 6 — Create a TMDB API Key to be used to build your docker image.
-
-Step 7 — Email Integration With Jenkins and Plugin setup.
-
-Step 8 — Create a Pipeline Project in Jenkins using a Declarative Pipeline.
-
-Step 9 — Access your k8s clutter and set up continuous delivery with argocd.
-
-Step 10 — Access the Netflix app on the Browser.
-
-Step 12— Access prometheus and Grafana UI and explore metrics.
-
-Step 13 — Clean up.
 
 Grafana
 ---
