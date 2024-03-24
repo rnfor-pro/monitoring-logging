@@ -386,13 +386,105 @@ stage('Deploy to container'){
         }
 ```
 
-
 EKS
 ---
+
+The Terraform script provisions an Amazon EKS cluster on AWS, along with associated resources. We create IAM roles and policies, defining permissions for EKS and the associated node group. VPC and subnet information is retrieved, and an EKS cluster is established, linking it to the specified VPC and subnets. Additionally, we create an EKS node group, configuring instance types, scaling, and associating it with the EKS cluster.
+
  [steps here](https://github.com/rnfor-pro/monitoring-logging/blob/main/kube-EKS/README.md)
 
 Install helm [here](https://helm.sh/docs/intro/install/)
 
+
+
+ArgoCD
+---
+
+Then install ArgoCD. ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It allows users to maintain and manage Kubernetes applications using Git repositories as the source of truth for the desired application state. ArgoCD automates the deployment, monitoring, and lifecycle management of applications in Kubernetes clusters.
+
+```
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.7/manifests/install.yaml
+```
+
+Let’s expose the ArgoCD service
+
+```
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+```
+Install Node Exporter Using Helm
+---
+
+We’ll use Node Exporter to collect our Kubenetes Cluster Nodes system-level metrics. Helm is a requisite though and can be installed via this link if you don’t already have it. Helm is a package manager for Kubernetes applications. It simplifies the process of defining, installing, and upgrading even the most complex Kubernetes applications. Install Node Exporter using Helm through the following steps:
+
+a. Add the Prometheus Community Helm repository
+
+```
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+```
+
+
+b. Create a Kubernetes namespace for the Node Exporter
+
+```
+kubectl create namespace prometheus-node-exporter
+```
+
+c. Install the Node Exporter using Helm
+
+```
+helm install prometheus-node-exporter prometheus-community/prometheus-node-exporter --namespace prometheus-node-exporter
+```
+
+Add a Job to scrape metrics on nodeip:9001/metrics. We can achieve this by adding the following configuration to our prometheus.yml file and reloading Prometheus afterward
+
+```
+sudo vim /etc/prometheus/prometheus.yml
+```
+
+```
+ - job_name: "Netflix App"
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["node1Ip:9100"]
+```
+```
+promtool check config /etc/prometheus/prometheus.yml
+```
+
+Use a POST request to reload the config.
+```
+curl -X POST http://localhost:9090/-/reload
+```
+
+Configuring ArgoCD
+---
+
+[video]()
+
+Let’s fetch ArgoCD LoadBalancer URL.
+
+```
+export ARGOCD_SERVER=`kubectl get svc argocd-server -n argocd -o json | jq --raw-output '.status.loadBalancer.ingress[0].hostname'`
+echo $ARGOCD_SERVER
+```
+Copy and paste it in a browser. Click on the ‘Advanced’ settings and the url
+
+To login, default username is “admin” but we’ll need to fetch the password like so:
+
+```
+export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
+echo $ARGO_PWD
+```
+[video]()
+
+Let’s connect ArgoCD to our repo. Navigate to Settings → Repositories → Connect Repo Using HTTPS
+
+Next, we head to Manage Applications → New App
+
+We’ll access the application through the `node public IP on port 30007` (ensure you enable port 30007 on the Node Cluster Security Group).
+
+For this setup, we’ll simply terraform destroy first in our Infrastructure directory and then in our kube-EKS directory.
 
 
 
