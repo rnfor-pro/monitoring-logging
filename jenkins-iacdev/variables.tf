@@ -1,10 +1,10 @@
 variable "aws_region" {
-  default = "us-east-1"
+  default = "us-east-2"
   type    = string
 }
 
 variable "ami_id" {
-  default = "ami-0cd59ecaf368e5ccf"
+  default = "ami-0b4750268a88e78e0"
   type    = string
 }
 
@@ -19,7 +19,7 @@ variable "key_name" {
 }
 
 variable "bucket" {
-  default = "jenkins-s3-bucket-etechapp"
+  default = ""
   type    = string
 }
 

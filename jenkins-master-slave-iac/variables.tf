@@ -1,9 +1,9 @@
 variable "aws_region" {
-  default = "us-east-1"
+  default = "us-east-2"
 }
 
 variable "ami_id" {
-  default = "ami-0cd59ecaf368e5ccf"
+  default = "ami-0b4750268a88e78e0"
 }
 
 variable "instance_type" {
@@ -15,7 +15,7 @@ variable "key_name" {
 }
 
 variable "slave_ami_id" {
-  default = "ami-0cd59ecaf368e5ccf"
+  default = "ami-0b4750268a88e78e0"
 } 
 
 variable "slave_instance_type" {
@@ -27,7 +27,7 @@ variable "slave_key_name" {
 }
 
 variable "bucket" {
-  default = "jenkins-s3-bucket-etechapp"
+  default = ""
 }
 
 variable "acl" {

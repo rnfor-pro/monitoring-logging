@@ -37,3 +37,4 @@ sudo systemctl enable jenkins
 
 echo "------------changing hostname--------------"
 sudo hostnamectl set-hostname jenkins_server
+bash

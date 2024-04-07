@@ -5,7 +5,7 @@ resource "aws_instance" "jenkins-ec2" {
   key_name                    = var.key_name
   associate_public_ip_address = true
   vpc_security_group_ids      = [aws_security_group.jenkins-sg.id]
-  user_data                   = "${file("install_jenkins.sh")}"
+  user_data                   = file("install_jenkins.sh")
 
 
   tags = {
