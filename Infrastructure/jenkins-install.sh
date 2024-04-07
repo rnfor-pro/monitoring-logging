@@ -38,4 +38,5 @@ git clone https://github.com/rnfor-pro/monitoring-logging.git
 
 # Rename hostname
 
+echo "------------changing hostname--------------"
 sudo hostnamectl set-hostname jenkins_server
