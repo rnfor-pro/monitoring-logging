@@ -3,7 +3,7 @@ variable "aws_region" {
 }
 
 variable "ami_id" {
-  default = "ami-0c101f26f147fa7fd"
+  default = "ami-0cd59ecaf368e5ccf"
 }
 
 variable "instance_type" {
@@ -15,11 +15,11 @@ variable "key_name" {
 }
 
 variable "slave_ami_id" {
-  default = "ami-0c101f26f147fa7fd"
-}
+  default = "ami-0cd59ecaf368e5ccf"
+} 
 
 variable "slave_instance_type" {
-  default = "t2.medium"
+  default = "t2.micro"
 }
 
 variable "slave_key_name" {
