@@ -14,9 +14,9 @@
    cd jenkins-iacdev
    ```
 ---   
-3. edit terraform.tfvars file and change the buckete name and the region to meet your need. 
+3. edit terraform.tfvars file and change the bucket name to meet your need. 
 
-    `Do NOT change the AMI unless you change the region.`
+    `Do NOT change the AMI unless you change the region in variables.tf file.`
 ---    
 
 4. Run:
