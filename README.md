@@ -330,6 +330,12 @@ OWASP Dependency Check
 ---
 `Goto Dashboard → Manage Jenkins → Tools → Dependency check`
 
+Add Dependency-Check -> under name add `DP-Check`
+
+Check install automatically and select `install from github`
+
+For version go with `dependency-check 6.5.1`
+
 Click on Apply and Save.
 
 Now go configure → Pipeline and add this stage to your pipeline and build.
