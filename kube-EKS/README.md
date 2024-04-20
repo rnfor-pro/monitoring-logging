@@ -47,26 +47,7 @@ kubectl apply -f config-map-aws-auth.yaml
 ```
 kubectl get nodes
 ```
-
-## Destroy
-Make sure all the resources created by Kubernetes are removed (LoadBalancers, Security groups), and issue:
-```
-terraform destroy
-```
 ## How do i get IAM permissions to see cluster resources?
 After you login via your aws console, note down the arn of the iam user from IAM services
-
-Run:
-```
-kubectl edit cm aws-auth -n kube-system
-```
-Add the following line carefully:
-```
-  mapUsers: |
-    - userarn: arn:aws:iam::[account_id]:$iamuser
-      username: $iamuser
-      groups:
-        - system:masters
- ```
 
 [Click here](https://github.com/rnfor-pro/monitoring-logging/tree/main#:~:text=steps%20here-,Install%20helm%20here,-ArgoCD) and continue from install helm you need to scroll all the way down
