@@ -68,3 +68,5 @@ Add the following line carefully:
       groups:
         - system:masters
  ```
+
+[Install helm and argoCD steps](https://github.com/rnfor-pro/monitoring-logging/tree/main#:~:text=steps%20here-,Install%20helm,-here)
