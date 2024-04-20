@@ -468,6 +468,8 @@ Configuring ArgoCD
 
 [video]()
 
+`Back to your terminal where you were running your kubectl comands previously`
+
 Let’s fetch ArgoCD LoadBalancer URL.
 
 ```
