@@ -47,7 +47,4 @@ kubectl apply -f config-map-aws-auth.yaml
 ```
 kubectl get nodes
 ```
-## How do i get IAM permissions to see cluster resources?
-After you login via your aws console, note down the arn of the iam user from IAM services
-
 [Click here](https://github.com/rnfor-pro/monitoring-logging/tree/main#:~:text=steps%20here-,Install%20helm%20here,-ArgoCD) and continue from install helm you need to scroll all the way down
