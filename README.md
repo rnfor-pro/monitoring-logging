@@ -442,7 +442,7 @@ c. Install the Node Exporter using Helm
 helm install prometheus-node-exporter prometheus-community/prometheus-node-exporter --namespace prometheus-node-exporter
 ```
 
-Add a Job to scrape metrics on nodeip:9001/metrics. We can achieve this by adding the following configuration to our prometheus.yml file and reloading Prometheus afterward
+Add a Job to scrape metrics on nodeip:9001/metrics. We can achieve this by adding the following configuration to our prometheus.yml file and reloading Prometheus afterward. `Run on your monitoring server`
 
 ```
 sudo vim /etc/prometheus/prometheus.yml
