@@ -47,4 +47,4 @@ kubectl apply -f config-map-aws-auth.yaml
 ```
 kubectl get nodes
 ```
-[Click here](https://github.com/rnfor-pro/monitoring-logging/tree/main#:~:text=steps%20here-,Install%20helm%20here,-ArgoCD) to install helm
+[Click here]([https://github.com/rnfor-pro/monitoring-logging/tree/main#:~:text=steps%20here-,Install%20helm%20here,-ArgoCD](https://github.com/rnfor-pro/DevOps/blob/main/monitoring-logging/README.md#:~:text=cluster%20steps%20here-,Install%20helm,-here)) to install helm
